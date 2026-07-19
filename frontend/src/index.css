@@ -1,0 +1,209 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-black-forest text-[#f3f4f6] font-sans antialiased selection:bg-light-green selection:text-black-forest;
+    background-color: #0a1c11; /* Dark luxurious Obsidian Jade background */
+    overflow-x: hidden; /* Prevent horizontal scroll globally */
+    width: 100%;
+    max-w: 100vw;
+    /* Expensive Grid Overlay Pattern */
+    background-image: 
+      linear-gradient(rgba(150, 224, 114, 0.015) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(150, 224, 114, 0.015) 1px, transparent 1px);
+    background-size: 50px 50px;
+    background-position: center;
+  }
+}
+
+/* Custom Premium Animations for Floating/Parallax Food Items */
+@keyframes float {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(3deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+@keyframes float-reverse {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(15px) rotate(-3deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float-reverse 7s ease-in-out infinite;
+  animation-delay: 1.5s;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050e09;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #143521;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #96e072;
+}
+
+/* Utility to overlay rich dark radial gradient for depth (Jade theme) */
+.radial-overlay {
+  background: radial-gradient(circle at 50% 50%, rgba(10, 28, 17, 0.5) 0%, rgba(5, 14, 9, 0.99) 100%);
+}
+
+.card-gradient {
+  background: linear-gradient(135deg, rgba(61, 163, 93, 0.03) 0%, rgba(10, 28, 17, 0.25) 100%);
+  border: 1px solid rgba(150, 224, 114, 0.08);
+  backdrop-filter: blur(12px);
+}
+
+.card-gradient:hover {
+  border-color: rgba(150, 224, 114, 0.3);
+  box-shadow: 0 10px 40px -15px rgba(150, 224, 114, 0.15);
+}
+
+/* Star Border Animations */
+@keyframes star-movement-bottom {
+  0% { transform: translate(0%, 0%); opacity: 1; }
+  100% { transform: translate(-100%, 0%); opacity: 0; }
+}
+
+@keyframes star-movement-top {
+  0% { transform: translate(0%, 0%); opacity: 1; }
+  100% { transform: translate(100%, 0%); opacity: 0; }
+}
+
+.animate-star-movement-bottom {
+  animation: star-movement-bottom linear infinite alternate;
+}
+
+.animate-star-movement-top {
+  animation: star-movement-top linear infinite alternate;
+}
+
+/* Premium Underline Hover Animation from Center */
+.nav-underline {
+  position: relative;
+}
+
+.nav-underline::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: #96e072;
+  transform-origin: bottom center;
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 0 10px #96e072;
+}
+
+.nav-underline:hover::after {
+  transform: scaleX(1);
+}
+
+/* Button Shadow Hover Glow */
+.btn-glow {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.btn-glow:hover {
+  box-shadow: 0 0 25px rgba(150, 224, 114, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Ambient glow spots for background depth */
+.glow-spot {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.35;
+}
+
+/* POS Thermal Receipt Print styling */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  
+  .print-receipt-container,
+  .print-receipt-container * {
+    visibility: visible;
+  }
+  
+  .print-receipt-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 80mm;
+    padding: 10px;
+    background: white !important;
+    color: black !important;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 12px;
+    border: none;
+  }
+
+  /* Hide print buttons and layout wrappers during print */
+  header, footer, nav, button, .no-print {
+    display: none !important;
+  }
+}
+
+/* Scroll reveal entry visual animations */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(32px) scale(0.98);
+  transition: opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1), transform 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.reveal-active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+

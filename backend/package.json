@@ -1,0 +1,22 @@
+{
+  "name": "xyner-whatsapp-agent",
+  "version": "1.0.0",
+  "description": "WhatsApp Multilingual AI Reservation & Menu Agent for XYNER Cafe",
+  "main": "src/index.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "test": "node test/test_agent.js"
+  },
+  "dependencies": {
+    "@google/genai": "^2.10.0",
+    "axios": "^1.7.2",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "firebase-admin": "^12.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}
